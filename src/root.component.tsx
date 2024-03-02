@@ -10,9 +10,9 @@ export default function Root(props) {
         <Card title="Peringatan">
           <p>Pilih salah satu untuk melihat UI Microfrontend</p>
           <div className='d-flex gap-3'>
-            <a href='/mf-oci-travel-root/train' className='btn btn-sm btn-secondary'>MF Train</a>
-            <a href='/mf-oci-travel-root/hotel' className='btn btn-sm btn-secondary'>MF Hotel</a>
-            <a href='/mf-oci-travel-root/cra' className='btn btn-sm btn-secondary'>MF Existing App (sebelumnya pakai CRA)</a>
+            <a href='/train' className='btn btn-sm btn-secondary'>MF Train</a>
+            <a href='/hotel' className='btn btn-sm btn-secondary'>MF Hotel</a>
+            <a href='/cra' className='btn btn-sm btn-secondary'>MF Existing App (sebelumnya pakai CRA)</a>
           </div>
         </Card>
       </div>
