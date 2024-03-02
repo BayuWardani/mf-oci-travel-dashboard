@@ -12,7 +12,7 @@ export default function Root(props) {
           <div className='d-flex gap-3'>
             <a href='/train' className='btn btn-sm btn-secondary'>MF Train</a>
             <a href='/hotel' className='btn btn-sm btn-secondary'>MF Hotel</a>
-            <a href='/cra' className='btn btn-sm btn-secondary'>MF Existing App (sebelumnya pakai CRA)</a>
+            <a href='/cra' className='btn btn-sm btn-secondary'>MF Old App (sebelumnya pakai CRA)</a>
           </div>
         </Card>
       </div>
