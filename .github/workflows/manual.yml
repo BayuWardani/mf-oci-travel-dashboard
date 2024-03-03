@@ -1,0 +1,36 @@
+name: Run tests
+
+on: [pull_request]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    permissions: write-all
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: build
+          uses: actions/setup-node@v4.0.2
+        - run: npm ci
+        - run: npm run build --if-present
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ap-southeast-2
+  
+        - name: Upload files to S3 with AWS CLI
+          run: |
+            aws s3 sync ./dist/ s3://bayuwrdani/dashboard/${GITHUB_SHA} --delete --acl public-read
+        - name: "Generate URL"
+          run: echo "PR_COMMENT=Untuk melakukan testing data pr ini bisa menggunakan link berikut https://spa.bayuwardani.my.id/dev.html?appName=@oci/travel-dashboard&appUrl=https://bayuwrdani.s3.ap-southeast-2.amazonaws.com/dashboard/${GITHUB_SHA}/oci-travel-dashboard.js" >> $GITHUB_ENV
+
+        - name: "comment"
+          uses: github-actions-up-and-running/pr-comment@v1.0.1
+          with:
+            # GITHUB_TOKEN secret
+            repo-token: ${{secrets.GITHUB_TOKEN}}
+            # Message to comment
+            message: ${{ env.PR_COMMENT }}
