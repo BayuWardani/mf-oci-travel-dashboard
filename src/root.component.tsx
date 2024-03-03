@@ -8,7 +8,7 @@ export default function Root(props) {
     <div className='d-flex align-item-center justify-content-center mt-4'>
       <div className='col-md-5'>
         <Card title="Peringatan">
-          <p>Pilih salah satu untuk melihat UI Microfrontend</p>
+          <p>Perubahan dari PR V1</p>
           <div className='d-flex gap-3'>
             <a href='/train' className='btn btn-sm btn-secondary'>MF Train</a>
             <a href='/hotel' className='btn btn-sm btn-secondary'>MF Hotel</a>
